@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: rmessner <rmessner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:41:49 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/14 16:15:32 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:12:30 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char **ft_split(char const *s, char c)
 	res[word_count] = NULL;
 	return (res);
 }
-
+/*
 int main(void)
 {
     char const *input = "Hello World,This,Is,An,Example";
@@ -132,3 +132,4 @@ int main(void)
 
     return 0;
 }
+*/
