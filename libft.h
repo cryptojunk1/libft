@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:29:58 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/16 16:30:56 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:08:07 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,4 @@ char            *ft_strtrim(char const *s1, char const *set);
 char            **ft_split(char const *s, char c);
 char            *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void            ft_striteri(char *s, void (*f)(unsigned int, char*));
+char		    *ft_itoa(int n);
