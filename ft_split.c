@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmessner <rmessner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:41:49 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/15 10:12:30 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:04:59 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,111 +25,98 @@ NULL if the allocation fails.
 
 */
 
-static int	ft_countword(char *s, char delimiter)
+static int count_words(const char *s, char delimiter)
+{
+	int	count = 0;
+	int	word = 0;
+
+	while (*s != '\0')
 	{
-		int count;
-		int	word;
-		
-		count = 0;
-		word = 0;
-		while (*s != '\0')
+		if (*s == delimiter && word == 1)
 		{
-			if (*s == delimiter && word == 1)
-			{
-				word = 0;
-			}
-			else if (word == 0)
-			{
-				count++;
-				word = 1;
-			}
-			s++;
+			word = 0;
 		}
-		return (count);
-	}
-
-static	int ft_count_letter(char *s, char delimiter)
-{
-	unsigned int	i;
-
-	i = 0;
-	while(s[i] != '\0' && s[i] != delimiter)
-	{
-		i++;
-	}
-	return (i);
+		else if (*s != delimiter && word == 0)
+		{
+			count++;
+			word = 1;
+		}
+        s++;
+    }
+    return (count);
 }
 
-static char	*ft_strndup(const char *s, unsigned int n)
+static char *ft_strndup(const char *s, size_t n)
 {
-	char			*ptr;
-	unsigned int	i;
+    size_t	i;
 
 	i = 0;
-	ptr = (char *)malloc(sizeof(char) * (n + 1));
-	if (ptr == NULL)
-		return NULL;
-	while(i < n)
-	{
-		ptr[i] = s[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+	char *ptr = (char *)malloc(n + 1);
+    if (ptr == NULL)
+        return NULL;
+    while (i < n)
+    {
+        ptr[i] = s[i];
+        i++;
+    }
+    ptr[i] = '\0';
+    return (ptr);
 }
 
-char **ft_split(char const *s, char c)
+static char **free_memory(char **res, int index)
 {
-	int	word_count;
+	while (index >= 0)
+	{
+		free(res[index]);
+		index--;
+	}
+	free(res);
+	return (NULL);
+}
+
+void	skip_spaces(char const *s, char c)
+{
+	while (*s == c)
+		s++;
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	s_len;
+	size_t	len;
+	int		word_count;
 	char	**res;
-	int		len;
 	int		i;
+	const char	*end;
 
 	i = 0;
-	word_count = ft_countword((char *)s, c);
-	if (s == NULL)
-	{
+	s_len = ft_strlen(s);
+	word_count = count_words(s, c);
+	if (!s || !*s)
 		return (NULL);
-	}
-	res = (char **)malloc(sizeof(char *) * (word_count + 1));
+	skip_spaces(s, c);
+    while (s_len > 0 && s[s_len - 1] == c)
+        s_len--;
+    res = (char **)malloc(sizeof(char *) * (word_count + 1));
     if (res == NULL)
-    {
         return (NULL);
-    }
-	while (word_count > i)
-	{
-		len = ft_count_letter((char *)s, c);
-		res[i] = ft_strndup((char *)s, len);
-		i++;
-		s += len + 1;
-	}
-	res[word_count] = NULL;
-	return (res);
-}
-/*
-int main(void)
-{
-    char const *input = "Hello World,This,Is,An,Example";
-    char delimiter = ',';
-
-    char **result = ft_split(input, delimiter);
-
-    if (result)
+    while (word_count > 0)
     {
-        int i = 0;
-        while (result[i])
+		while (*s == c)
+			s++;
+        end = s;
+        while (*end != c && *end != '\0')
+            end++;
+        len = end - s;
+        res[i] = ft_strndup(s, len);
+        if (res[i] == NULL)
         {
-            printf("%s\n", result[i]);
-            free(result[i]); // Free each string
-            i++;
+            return (free_memory(res, i - 1));
         }
-        free(result); // Free the array
+        word_count--;
+        s = end;
+        i++;
     }
-    else
-    {
-        printf("Splitting failed.\n");
-    }
-
-    return 0;
+    res[i] = NULL;
+    return (res);
 }
-*/

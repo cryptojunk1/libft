@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:33:14 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 08:44:47 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:18:05 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,33 +53,49 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 }
 */
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	char			*sub_p;
 	unsigned int	i;
 
 	i = 0;
-	while (*s != '\0')
+	while (src[i] != '\0' && i < n)
 	{
-		if (i == start)
-		{
-			i = 0;
-			sub_p = malloc(len * sizeof(char));
-			while (len > i)
-			{
-				ft_strlcpy(sub_p, (char *)s, len);
-				i++;
-				sub_p++;
-				return (sub_p);
-			}
-			s++;
-		}
-		s++;
+		dest[i] = src[i];
 		i++;
 	}
-	free(sub_p);
-	return (NULL);
+		dest[i] = '\0';
+		i++;
+	return (dest);
 }
+
+char *ft_substr(char const *s, unsigned int start, size_t len)
+{
+    if (!s)
+        return (NULL);
+
+    size_t s_len = ft_strlen(s);
+
+    if (start >= s_len)
+        return (NULL);
+
+    size_t sub_len = 0;
+    while (s[start + sub_len] && sub_len < len)
+    {
+        sub_len++;
+    }
+
+    char *substr = (char *)malloc((sub_len + 1) * sizeof(char));
+
+    if (!substr)
+        return (NULL);
+
+    ft_strncpy(substr, (char *)(s + start), sub_len);
+    substr[sub_len] = '\0';
+
+    return (substr);
+}
+
+
 
 /*
 int	main()
