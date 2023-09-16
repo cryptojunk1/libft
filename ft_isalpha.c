@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:07:27 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 09:14:12 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 13:56:34 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include "libft.h"
 
-unsigned int	ft_isalpha(unsigned char c)
+int	ft_isalpha(int c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:38:21 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 08:42:53 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 13:56:35 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 #include <stdio.h>
 #include "libft.h"
 
-unsigned int	ft_isalnum(unsigned char c)
+int	ft_isalnum(int c)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	else
-	{
-		return (0);
-	}
+	return (ft_isdigit(c) || ft_isalpha(c));
 }
 /*
 int	main()

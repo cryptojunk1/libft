@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:32:24 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 08:43:01 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:18:30 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 #include <stdio.h>
 #include "libft.h"
 
-unsigned int	ft_isdigit(unsigned char c)
+int	ft_isdigit(int c)
 {
 	if (c >= 48 && c <= 57)
+	{	
 		return (1);
+	}
 	else
 	{
 		return (0);

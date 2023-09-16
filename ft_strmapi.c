@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:21:06 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/14 19:59:30 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:19:14 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
     unsigned int    i;
     char            *res;
-    int             len;
+    unsigned int    len;
 
     i = 0;
     len = 0;

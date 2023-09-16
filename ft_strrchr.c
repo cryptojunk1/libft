@@ -6,13 +6,31 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:30:36 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 09:25:23 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:30:19 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	while (i >= 0)
+	{
+		if (s[i] == (char)c)
+		{
+			return ((char *)(s + i));
+		}
+		i--;
+	}
+	return (NULL);
+}
 
 /*
 char *ft_strrchr(const char *s, int c);
@@ -43,20 +61,3 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 */
-char	*ft_strrchr(const char *s, int c)
-{
-	size_t	s_len;
-
-	s_len = ft_strlen((char *)s);
-	s = s + s_len - 1;
-	while (s_len > 0)
-	{
-		if (*s == c)
-		{
-			return ((char *)s);
-		}
-		s_len--;
-		s--;
-	}
-	return (NULL);
-}

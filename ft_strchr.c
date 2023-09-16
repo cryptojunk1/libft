@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:27:48 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 09:25:05 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:23:28 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s != '\0')
 	{
-		if (*s == c)
+		if (*s == (char)c)
 		{
 			return ((char *)s);
 		}
 		s++;
 	}
+	if (*s == (char)c)
+		return ((char *)(s));
 	return (NULL);
 }

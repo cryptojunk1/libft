@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:50:25 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 08:42:56 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:54:25 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,35 @@
 #include <stdio.h>
 #include "libft.h"
 
+static int	negative(const char *str, int i)
+{
+	if (str[i] == '-') 
+		return (-1);
+	else  
+		return (1);
+}
+
 int	ft_atoi(const char *str)
 {
-	size_t	i;
-	int		res;
+	int	i;
+	int	res;
+	int	neg;
 
 	i = 0;
 	res = 0;
-	while (str[i] >= '0' && str[i] <= '9')
+	while ((str[i] > 8 && str[i] < 14) || str[i] == 32)
 	{
-		res = res * 10 + (str[i] - 48);
 		i++;
 	}
-	return (res);
+	neg = negative(str, i);
+	if (neg == -1 || str[i] == 43)
+		i++;
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		res = (res * 10) + (str[i] - 48);
+		i++;
+	}
+	return (res * neg);
 }
 
 /*

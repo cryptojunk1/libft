@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:53:36 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 08:44:25 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:41:06 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,22 @@ int	ft_strlen(char *src)
 }
 */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned int	x;
+	size_t	i;
 
 	i = 0;
-	x = 0;
-	if (size != '\0')
+	if (size > 0)
 	{
-		while (src[x] != '\0' && x < size)
+		while (src[i] && i < (size - 1))
 		{
-			dest[i] = src[x];
+			dest[i] = src[i];
 			i++;
-			x++;
 		}
 		dest[i] = '\0';
 	}
+	while (src[i] != '\0')
+		i++;
 	return (i);
 }
 /*

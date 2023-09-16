@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:24:28 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/14 19:32:59 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:20:08 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void ft_striteri(char *s, void (*f)(unsigned int, char*))
 
     i = 0;
     if (s == NULL || f == NULL)
-        return (NULL);
+        return;
     while (s[i] != '\0')
     {
         f(i, &s[i]);
         i++;
     }
-    return (0);
+    return;
 }

@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:09:35 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 14:22:06 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:17:58 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include "libft.h"
 
+/*
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s != '\0')
@@ -54,6 +55,7 @@ int	ft_strlen(char *str)
 		i++;
 	return (i);
 }
+*/
 
 char *ft_strtrim(char const *s1, char const *set)
 {
@@ -84,7 +86,7 @@ char *ft_strtrim(char const *s1, char const *set)
     }
     return (trimmed_str);
 }
-
+/*
 int main()
 {
     char const *original = "   Hallo, Welt!   ";
@@ -106,3 +108,4 @@ int main()
 
     return 0;
 }
+*/

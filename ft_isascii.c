@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:43:00 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 09:14:35 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:00:11 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stdio.h>
 #include "libft.h"
 
-unsigned int	ft_isascii(unsigned char c)
+int	ft_isascii(int c)
 {
-	if (c > 0 && c <= 127)
+	if (c >= 0 && c < 128)
 		return (1);
 	else
 	{

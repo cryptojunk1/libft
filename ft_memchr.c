@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:22:38 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 09:21:22 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 13:08:54 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ int ft_strlen(const char *str)
 */
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const char	*p_s;
+	size_t	i;
 
-	p_s = (const char *)s;
-	n = ft_strlen((char *)s);
-	while (p_s != NULL && n > 0)
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	while (i < n)
 	{
-		if (*p_s == c)
+		if (*(char *)(s + i) == (char)c)
 		{
-			return ((char *)p_s);
+			return ((void *)(s + i));
 		}
-		p_s++;
-		n--;
+		i++;
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:22:10 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 08:42:54 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:24:25 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,15 @@ void	ft_bzero(void *str, unsigned int n)
 */
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*ptr;
+	void	*ptr;
 
-	if (nmemb == 0 || size == 0 || (nmemb * size) >= __INT_MAX__)
-	{
+	ptr = malloc(nmemb * size);
+	if (!ptr)
 		return (NULL);
-	}
-	else
-	{
-		ptr = malloc(nmemb * size);
-		ft_bzero(ptr, nmemb * size);
-	}
+	ft_memset(ptr, 0, nmemb);
 	return (ptr);
 }
+
 /*
 int main()
 {
