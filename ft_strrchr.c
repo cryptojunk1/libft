@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:30:36 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/16 14:30:19 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 16:01:47 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ char	*ft_strrchr(const char *s, int c)
 	int	i;
 
 	i = 0;
+	//iterate to end
 	while (s[i] != '\0')
 		i++;
+	//go backwards until condition is met or not
 	while (i >= 0)
 	{
 		if (s[i] == (char)c)
@@ -33,9 +35,6 @@ char	*ft_strrchr(const char *s, int c)
 }
 
 /*
-char *ft_strrchr(const char *s, int c);
-int	ft_strlen(const char *str);
-
 int	main()
 {
 	char s[] = "Hello my Friends!";

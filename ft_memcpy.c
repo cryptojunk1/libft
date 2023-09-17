@@ -6,12 +6,10 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:21:10 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 08:43:40 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 14:53:23 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)

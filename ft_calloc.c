@@ -6,39 +6,34 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:22:10 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/16 16:24:25 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:08:58 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
-/*
-void	ft_bzero(void *str, unsigned int n)
-{
-	char *ptr;
 
-	ptr = (char *)str;
-	while (n > 0)
-	{
-		*ptr = '\0';
-		ptr++;
-		n--;
-	}
-}
-*/
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*ptr;
+    size_t total_size;
+    void *ptr;
 
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, nmemb);
-	return (ptr);
+	// Überprüfen, ob es ein Überlauf gibt, indem nmemb und size multipliziert werden.
+    if (nmemb > 0 && size > 0 && __SIZE_MAX__ / nmemb < size) 
+	{
+        return NULL; // Speicherüberlauf verhindern
+    }
+    total_size = nmemb * size;
+
+    ptr = malloc(total_size);
+
+    if (!ptr) {
+        return NULL; // Fehler bei der Speicherallokation
+    }
+    // Speicher mit Nullen initialisieren
+    ft_memset(ptr, 0, total_size);
+    return ptr;
 }
-
 /*
 int main()
 {

@@ -6,12 +6,10 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:17:21 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/16 14:33:12 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 16:07:01 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

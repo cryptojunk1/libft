@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:41:49 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/16 19:04:59 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 12:14:39 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,98 +25,69 @@ NULL if the allocation fails.
 
 */
 
-static int count_words(const char *s, char delimiter)
+#include "libft.h"
+
+static int count_words(char const *s, char c)
 {
-	int	count = 0;
-	int	word = 0;
-
-	while (*s != '\0')
-	{
-		if (*s == delimiter && word == 1)
-		{
-			word = 0;
-		}
-		else if (*s != delimiter && word == 0)
-		{
-			count++;
-			word = 1;
-		}
-        s++;
-    }
-    return (count);
-}
-
-static char *ft_strndup(const char *s, size_t n)
-{
-    size_t	i;
-
-	i = 0;
-	char *ptr = (char *)malloc(n + 1);
-    if (ptr == NULL)
-        return NULL;
-    while (i < n)
+    int count;
+	
+	count = 0;
+    while (*s)
     {
-        ptr[i] = s[i];
-        i++;
-    }
-    ptr[i] = '\0';
-    return (ptr);
-}
-
-static char **free_memory(char **res, int index)
-{
-	while (index >= 0)
-	{
-		free(res[index]);
-		index--;
-	}
-	free(res);
-	return (NULL);
-}
-
-void	skip_spaces(char const *s, char c)
-{
-	while (*s == c)
-		s++;
-}
-
-char	**ft_split(char const *s, char c)
-{
-	size_t	s_len;
-	size_t	len;
-	int		word_count;
-	char	**res;
-	int		i;
-	const char	*end;
-
-	i = 0;
-	s_len = ft_strlen(s);
-	word_count = count_words(s, c);
-	if (!s || !*s)
-		return (NULL);
-	skip_spaces(s, c);
-    while (s_len > 0 && s[s_len - 1] == c)
-        s_len--;
-    res = (char **)malloc(sizeof(char *) * (word_count + 1));
-    if (res == NULL)
-        return (NULL);
-    while (word_count > 0)
-    {
-		while (*s == c)
+        while (*s == c)
+        {    
 			s++;
-        end = s;
-        while (*end != c && *end != '\0')
-            end++;
-        len = end - s;
-        res[i] = ft_strndup(s, len);
-        if (res[i] == NULL)
+		}
+		if (*s)
         {
-            return (free_memory(res, i - 1));
+		    count++;
+		}
+		while (*s && *s != c)
+        {
+		    s++;
+		}
+	}
+    return count;
+}
+
+static char *get_next_word(char const **s, char c)
+{
+    const char	*start;
+
+	while (**s == c)
+        (*s)++;
+	start = *s;
+    while (**s && **s != c)
+        (*s)++;
+    return ft_substr(start, 0, *s - start);
+}
+
+char **ft_split(char const *s, char c)
+{
+    char	**res;
+	int		word_count;
+	
+	if (!s)
+        return NULL;
+
+    word_count = count_words(s, c);
+    res = (char **)malloc(sizeof(char *) * (word_count + 1));
+
+    if (!res)
+        return NULL;
+
+    for (int i = 0; i < word_count; i++)
+    {
+        res[i] = get_next_word(&s, c);
+        if (!res[i])
+        {
+            while (i >= 0)
+                free(res[i--]);
+            free(res);
+            return NULL;
         }
-        word_count--;
-        s = end;
-        i++;
     }
-    res[i] = NULL;
-    return (res);
+
+    res[word_count] = NULL;
+    return res;
 }

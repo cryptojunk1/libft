@@ -6,53 +6,33 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:30:11 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/16 15:26:06 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 16:35:03 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
 
-/*
-int	ft_strlen(const char *str)
+char *ft_strnstr(const char *haystack, const char *search, size_t len)
 {
-	size_t	i;
+    size_t search_len;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	search_len = ft_strlen(search);
+	// Wenn der zu suchende Teilstring leer ist, gebe den gesamten haystack zurück
+    if (search_len == 0)
+        return (char *)haystack;
+    while (*haystack != '\0' && len >= search_len)
+    {
+        if (*haystack == *search)
+        {
+            // Potenzielle Übereinstimmung gefunden, überprüfe die verbleibenden Zeichen
+            if (ft_strncmp(haystack, search, search_len) == 0)
+                return (char *)haystack;  // Übereinstimmung gefunden, gebe den Zeiger auf den Anfang zurück
+        }   
+        haystack++;
+        len--;
+    }
+    return NULL;  // Keine Übereinstimmung gefunden
 }
-*/
-char	*ft_strnstr(const char *s, const char *find, size_t n)
-{
-	size_t	i;
-	size_t	j;
-
-	if (s == NULL || find == NULL)
-		return (NULL);
-	if (find == NULL || find[0] == '\0')
-		return ((char *)s);
-	i = 0;
-	while (s[i] != '\0' && i < n)
-	{
-		j = 0;
-		while (s[i + j] && find[j] && i + j < n && s[i + j] == find[j])
-		{
-			j++;
-		}
-		if (find[j] == '\0')
-		{
-			return ((char *)(s + i));
-		}
-		i++;
-	}
-	return (NULL);
-}
-
 /*
 int main(void)
 {

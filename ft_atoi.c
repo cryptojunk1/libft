@@ -6,12 +6,10 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:50:25 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/16 15:54:25 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 16:46:58 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
 
 static int	negative(const char *str, int i)
@@ -30,13 +28,15 @@ int	ft_atoi(const char *str)
 
 	i = 0;
 	res = 0;
+	//iterate through space, new_line, ...
 	while ((str[i] > 8 && str[i] < 14) || str[i] == 32)
-	{
 		i++;
-	}
+	//check if negative
 	neg = negative(str, i);
+	//iterate through - or +
 	if (neg == -1 || str[i] == 43)
 		i++;
+	//convert char to int
 	while (str[i] >= 48 && str[i] <= 57)
 	{
 		res = (res * 10) + (str[i] - 48);

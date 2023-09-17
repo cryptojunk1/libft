@@ -6,7 +6,7 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:04:45 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 13:08:55 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 12:33:46 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,57 +14,40 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/*
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	const char	*p_src;
-	char		*p_dest;
-
-	p_dest = (char *)dest;
-	p_src = (const char *)src;
-	while (n > 0)
-	{
-		*p_dest = *p_src;
-		p_dest++;
-		p_src++;
-		n--;
-	}
-	return (dest);
-}
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-*/
-
 char *ft_strjoin(char const *s1, char const *s2)
-{
+{	
+	if (!s1 && !s2)
+        return NULL;
+
 	size_t si1;
-	size_t si2;
-	size_t total_len;
-	char	*n_string;
+    size_t si2;
+    size_t i;
+    size_t j;
+    size_t total_len;
+    char    *res;
 
-	si1 = ft_strlen((char *)s1);
-	si2 = ft_strlen((char *)s2);
-	total_len = si1 + si2 + 1;
+    si1 = ft_strlen((char *)s1);
+    si2 = ft_strlen((char *)s2);
 
-	n_string = (char *)malloc(total_len);
-	if (n_string)
-	{
-		ft_memcpy(n_string, s1, si1);
-		while (*s2 != '\0')
-		{
-			n_string[si1++] = *s2;
-			s2++;
-		}
+    total_len = si1 + si2 + 1;
+    res = (char *)malloc(total_len);
+    if(!res)
+	return (NULL);
+    
+    i = 0;
+    j = 0;
+    while (i < si1)
+    {
+		res[i] = s1[i];
+		i++;
 	}
-	return (n_string);
+	while (j < si2)
+	{
+			res[i + j] = s2[j];
+			j++;
+	}
+	res[i + j] = '\0';
+    return (res);
 }
 /*
 int	main()

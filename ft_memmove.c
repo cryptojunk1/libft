@@ -6,12 +6,10 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:48:17 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/12 08:43:44 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 14:49:37 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
@@ -21,6 +19,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	p_dest = (char *)dest;
 	p_src = (const char *)src;
+	//check overlapping and cpy 
 	if (p_dest < p_src)
 	{
 		while (n-- > 0)
@@ -32,6 +31,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	else if (p_dest > p_src)
 	{
+		//jump to end and cpy
 		p_dest += n;
 		p_src += n;
 		while (n-- > 0)
@@ -43,6 +43,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
 /*
 int	main()
 {
