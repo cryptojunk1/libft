@@ -6,27 +6,13 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:41:49 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/17 12:14:39 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 18:45:44 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
-
-/*
-Description 
-Allocates (with malloc(3)) and returns an array of strings obtained by splitting ’s’ using the
-character ’c’ as a delimiter. The array must end with a NULL pointer.
-
-Return value The array of new strings resulting from the split.
-NULL if the allocation fails.
-
-*/
-
-#include "libft.h"
-
+//count words after finding c in s
 static int count_words(char const *s, char c)
 {
     int count;
@@ -35,17 +21,14 @@ static int count_words(char const *s, char c)
     while (*s)
     {
         while (*s == c)
-        {    
 			s++;
-		}
 		if (*s)
         {
 		    count++;
 		}
+        //itterate through word
 		while (*s && *s != c)
-        {
 		    s++;
-		}
 	}
     return count;
 }
@@ -53,7 +36,7 @@ static int count_words(char const *s, char c)
 static char *get_next_word(char const **s, char c)
 {
     const char	*start;
-
+	//extract the word and write it back
 	while (**s == c)
         (*s)++;
 	start = *s;
@@ -66,28 +49,29 @@ char **ft_split(char const *s, char c)
 {
     char	**res;
 	int		word_count;
+    int		i;
 	
 	if (!s)
         return NULL;
-
+	i = 0;
     word_count = count_words(s, c);
-    res = (char **)malloc(sizeof(char *) * (word_count + 1));
-
+    res = (char **)malloc((word_count + 1) * sizeof(char *));
     if (!res)
         return NULL;
-
-    for (int i = 0; i < word_count; i++)
+	//loop through and write with get_next_line the array
+    while ( i < word_count)
     {
         res[i] = get_next_word(&s, c);
         if (!res[i])
         {
+			//free if fail
             while (i >= 0)
                 free(res[i--]);
             free(res);
             return NULL;
         }
+		i++;
     }
-
     res[word_count] = NULL;
     return res;
 }

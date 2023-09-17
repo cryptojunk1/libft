@@ -6,56 +6,12 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:09:35 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/15 16:17:58 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 18:05:38 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "libft.h"
-
-/*
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s != '\0')
-	{
-		if (*s == c)
-		{
-			return ((char *)s);
-		}
-		s++;
-	}
-	return (NULL);
-}
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	const char	*p_src;
-	char		*p_dest;
-
-	p_dest = (char *)dest;
-	p_src = (const char *)src;
-	while (n > 0)
-	{
-		*p_dest = *p_src;
-		p_dest++;
-		p_src++;
-		n--;
-	}
-	return (dest);
-}
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-*/
 
 char *ft_strtrim(char const *s1, char const *set)
 {
@@ -63,28 +19,33 @@ char *ft_strtrim(char const *s1, char const *set)
     size_t  start;
     size_t  end;
     size_t  end_len;
+    char    *new_string;
 
     s_len = ft_strlen((char *)s1);
     start = 0;
     end = s_len - 1;
-    //vorwärts suchen
+    //iterate throug found chars in s1
     while (start < s_len && ft_strchr(set, s1[start]))
     {
         start++;
     }
+    //go back from end to start and look for chars from set
     while (end > start && ft_strchr(set, s1[end]))
     {
         end--;
     }
+    //calc the final lengh of the new string and allocate memory
     end_len = end - start + 1;
-    char    *trimmed_str = (char *)malloc(end_len +1);
-
-    if (trimmed_str)
+    new_string = (char *)malloc(end_len +1);
+    if (!new_string)
+        return (NULL);
+    //copy everything into the new string
+    if (new_string)
     {
-        ft_memcpy(trimmed_str, s1 + start, end_len);
-        trimmed_str[end_len] = '\0';
+        ft_memcpy(new_string, s1 + start, end_len);
+        new_string[end_len] = '\0';
     }
-    return (trimmed_str);
+    return (new_string);
 }
 /*
 int main()

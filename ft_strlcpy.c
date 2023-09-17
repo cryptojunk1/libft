@@ -6,26 +6,11 @@
 /*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:53:36 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/16 14:41:06 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/17 18:59:45 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
-/*
-int	ft_strlen(char *src)
-{
-	int	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-*/
 
 size_t ft_strlcpy(char *dest, const char *src, size_t size)
 {
@@ -41,6 +26,7 @@ size_t ft_strlcpy(char *dest, const char *src, size_t size)
 		}
 		dest[i] = '\0';
 	}
+	//count remaining src char
 	while (src[i] != '\0')
 		i++;
 	return (i);
