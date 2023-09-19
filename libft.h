@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: rmessner <rmessner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:29:58 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/16 19:08:07 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:28:03 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			*ft_memset(void *s, int c, size_t i);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strdup(const char *s);
 size_t			ft_strlcat(char *dest, const char *src, size_t size);
-size_t 			ft_strlcpy(char *dest, const char *src, size_t size);
+size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 int				ft_strlen(const char *str);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strnstr(const char *s, const char *find, size_t n);
@@ -40,9 +40,9 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
-char            *ft_strjoin(char const *s1, char const *s2);
-char            *ft_strtrim(char const *s1, char const *set);
-char            **ft_split(char const *s, char c);
-char            *ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void            ft_striteri(char *s, void (*f)(unsigned int, char*));
-char		    *ft_itoa(int n);
+char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strtrim(char const *s1, char const *set);
+char			**ft_split(char const *s, char c);
+char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void			ft_striteri(char *s, void (*f)(unsigned int, char*));
+char			*ft_itoa(int n);
