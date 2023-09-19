@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: rmessner <rmessner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:22:10 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/17 17:08:58 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:40:04 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,23 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-    size_t total_size;
-    void *ptr;
+	size_t	total_size;
+	void	*ptr;
 
-	// Überprüfen, ob es ein Überlauf gibt, indem nmemb und size multipliziert werden.
-    if (nmemb > 0 && size > 0 && __SIZE_MAX__ / nmemb < size) 
+	if (nmemb > 0 && size > 0 && __SIZE_MAX__ / nmemb < size)
 	{
-        return NULL; // Speicherüberlauf verhindern
-    }
-    total_size = nmemb * size;
-
-    ptr = malloc(total_size);
-
-    if (!ptr) {
-        return NULL; // Fehler bei der Speicherallokation
-    }
-    // Speicher mit Nullen initialisieren
-    ft_memset(ptr, 0, total_size);
-    return ptr;
+		return (NULL);
+	}
+	total_size = nmemb * size;
+	ptr = malloc(total_size);
+	if (!ptr)
+	{
+		return (NULL);
+	}
+	ft_memset(ptr, 0, total_size);
+	return (ptr);
 }
+
 /*
 int main()
 {

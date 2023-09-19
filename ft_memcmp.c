@@ -3,38 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: rmessner <rmessner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:59:16 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/17 16:21:23 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:23:58 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
 
-int ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-    const unsigned char *p1;  // Zeiger auf den ersten Speicherblock s1 als Byte-Zeiger
-    const unsigned char *p2;  // Zeiger auf den zweiten Speicherblock s2 als Byte-Zeiger
-    
+	const unsigned char	*p1;
+	const unsigned char	*p2;
+
 	p1 = s1;
 	p2 = s2;
-    // Durchsuche die Speicherblöcke für maximal n Bytes
-    while (n > 0)
-    {
-        if (*p1 != *p2)  // Vergleiche das aktuelle Byte in s1 mit dem in s2
-        {
-            return *p1 - *p2;  // Gebe die Differenz zwischen den Bytes zurück
-        }
-        
-        p1++;  // Gehe zum nächsten Byte in s1
-        p2++;  // Gehe zum nächsten Byte in s2
-        n--;   // Reduziere die verbleibende Anzahl der zu vergleichenden Bytes
-    }
-    
-    return 0;  // Die Speicherblöcke sind gleich
+	while (n > 0)
+	{
+		if (*p1 != *p2)
+		{
+			return (*p1 - *p2);
+		}
+		p1++;
+		p2++;
+		n--;
+	}
+	return (0);
 }
 /*
 int main()
