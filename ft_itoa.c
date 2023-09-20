@@ -3,25 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmessner <rmessner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:14:13 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/19 15:09:06 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/20 07:59:04 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int	get_num_len(int n)
+static int get_num_len(int n)
 {
 	int	len;
-
-	len = 1;
-	while (n)
+	
+	len = 0;
+	if (n == 0)
+		len = 1;
+	while (n != 0)
 	{
-		n /= 10;
 		len++;
+		n /= 10;
 	}
 	return (len);
 }
