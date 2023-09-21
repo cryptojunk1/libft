@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmessner <rmessner@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: rmessner <rmessner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:17:21 by rmessner          #+#    #+#             */
-/*   Updated: 2023/09/20 08:00:41 by rmessner         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:25:29 by rmessner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	us1;
-	unsigned char	us2;
-	size_t			i;
+	const char	*us1;
+	const char	*us2;
+	size_t		i;
 
-	us1 = (unsigned char)s1;
-	us2 = (unsigned char)s2;
+	us1 = s1;
+	us2 = s2;
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	while ((us1[i] != '\0' || us2[i] != '\0') && i < n)
 	{
-		if (us1 < us2)
+		if (us1[i] < us2[i])
 		{
 			return (-1);
 		}
-		else if (us1 > us2)
+		else if (us1[i] > us2[i])
 		{
 			return (1);
 		}
